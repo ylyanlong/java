@@ -1,6 +1,7 @@
 package com.yl.reflect;
 
-import cn.com.yl.dp.*;
+import com.yl.dp.*;
+import com.yl.dp.Observer;
 
 import java.lang.reflect.*;
 
