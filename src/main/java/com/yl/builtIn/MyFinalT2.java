@@ -12,7 +12,9 @@ public class MyFinalT2 {
     public static void main(String[] args){
         // circleObj1 = new Circle3(3.3);
         // circleObj2 = new Circle3(4.5);
+        MyFinalT2 myFinalT2 = new MyFinalT2();
         circleObj1.setRadius(5.2);
         System.out.println("circleObj1 's radius: " + circleObj1.getRadius());
+        System.out.println("adress:" + myFinalT2 );
     }
 }

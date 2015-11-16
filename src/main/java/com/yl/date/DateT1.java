@@ -11,6 +11,17 @@ import java.util.Date;
  * Created by Administrator on 2015/7/14.
  */
 public class DateT1 {
+    public static int getDaySumMin(Date date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateStr = dateFormat.format(date);
+        int hour = Integer.parseInt(dateStr.substring(11, 13));
+        System.out.println("hour: " + hour);
+        int min = Integer.parseInt(dateStr.substring(14, 16));
+        System.out.println("min: " + min);
+        int sumMin = hour * 60 + min;
+        return sumMin;
+    }
+
     public static void main(String[] args){
         System.out.println("curTime:" + System.currentTimeMillis() );
         Timestamp ts = new Timestamp(System.currentTimeMillis());
@@ -31,7 +42,10 @@ public class DateT1 {
 
         String dateStr1 = "2015-09-17 12:30:00";
         String dateStr2 = "2015-09-17 12:30:00";
-        String dateStr3 = "2015-09-22 17:20:00";
+        String dateStr3 = "2015-10-08 00:00:23";
+
+        DateFormat dateFormatNum = new SimpleDateFormat("yyyyMMddHHmmss");
+
         try {
             Date dateFromStr1 = dateFormat.parse(dateStr1);
             Date dateFromStr2 = dateFormat.parse(dateStr2);
@@ -39,6 +53,16 @@ public class DateT1 {
             System.out.println("dateFromStr1: " + dateFromStr1.toString());
             System.out.println("dateFromStr2: " + dateFromStr2);
             System.out.println("dateFromStr3: " + dateFromStr3.getTime());
+
+            // System.out.println("dateFormatNum: " + dateFormatNum.format(dateFromStr3) );
+            String dateTimeNum = dateFormatNum.format(dateFromStr3);
+            String dateNum = dateTimeNum.substring(0, 8);
+            System.out.println("dateNum: " + dateNum);
+            String timeNum = dateTimeNum.substring(8);
+            System.out.println("timeNum: " + timeNum);
+
+            int sumMin = getDaySumMin(dateFromStr3);
+            System.out.println("sumMin: " + sumMin);
 
             if(dateFromStr1.after(dateFromStr2)){
                 System.out.println("dateFromStr1 after dateFromStr2");
@@ -59,7 +83,9 @@ public class DateT1 {
         }
 
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.MINUTE, -20);
+        // cal.add(Calendar.MINUTE, -20);
+        System.out.println("hour: " + cal.get(Calendar.HOUR_OF_DAY) ) ;
+        System.out.println("min: " + cal.get(Calendar.MINUTE));
         Date date5 = cal.getTime();
         System.out.println("time5: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date5));
 
